@@ -36,6 +36,15 @@
       "compilerOptions": {
         "tsConfigPath": "libs/shared/tsconfig.lib.json"
       }
+    },
+    "yandex": {
+      "type": "application",
+      "root": "apps/yandex",
+      "entryFile": "main",
+      "sourceRoot": "apps/yandex/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/yandex/tsconfig.app.json"
+      }
     }
   }
 }

@@ -3,6 +3,6 @@ import { ReproducesHttpErrorsModule } from './reproduces-http-errors.module';
 
 async function bootstrap() {
   const app = await NestFactory.create(ReproducesHttpErrorsModule);
-  await app.listen(3001);
+  await app.listen(3333);
 }
 bootstrap();

@@ -4,9 +4,12 @@ import { ReproducesHttpErrorsService } from './reproduces-http-errors.service';
 
 @Module({
   imports: [],
-  controllers: [ReproducesHttpErrorsController],
+  controllers: [
+    ReproducesHttpErrorsController,
+  ],
   providers: [
     ReproducesHttpErrorsService,
   ],
 })
-export class ReproducesHttpErrorsModule {}
+export class ReproducesHttpErrorsModule {
+}

@@ -1,6 +1,5 @@
-import { Controller, Get, RequestTimeoutException } from '@nestjs/common';
+import { Controller, Get, InternalServerErrorException, RequestTimeoutException } from '@nestjs/common';
 import { ReproducesHttpErrorsService } from './reproduces-http-errors.service';
-import * as net from 'net';
 
 @Controller('http-errors')
 export class ReproducesHttpErrorsController {
@@ -13,14 +12,8 @@ export class ReproducesHttpErrorsController {
     return this.reproducesHttpErrorsService.isActive();
   }
 
-  // ECONNRESET [Error: socket hang up] code: 'ECONNRESET'
-  @Get('ETIMEDOUT')
+  @Get('internal-server-error')
   async eTimedOut(): Promise<string> {
-    try {
-      throw new RequestTimeoutException();
-      return 'ETIMEDOUT';
-    } catch (e) {
-      console.log(e);
-    }
+    throw new InternalServerErrorException();
   }
 }
