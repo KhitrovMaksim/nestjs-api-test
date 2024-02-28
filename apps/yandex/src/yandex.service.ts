@@ -3,6 +3,10 @@ import {
   Injectable,
   InternalServerErrorException,
 } from '@nestjs/common';
+import { PickupPointsListResponseDto } from './dtos/pickup-points-list-response.dto';
+import { PickupPointsListRequestDto } from './dtos/pickup-points-list-request.dto';
+import { errorDummy } from './dummies/error.dummy';
+import { cityDummy } from './dummies/city.dummy';
 
 @Injectable()
 export class YandexService {
@@ -118,5 +122,16 @@ export class YandexService {
         errors: ['400'],
       },
     });
+  }
+
+  getPickupPointsList(body: PickupPointsListRequestDto): PickupPointsListResponseDto {
+    const geoIdsForInternalServerError = [10776, 11162, 11131, 10174, 2, 11146, 10795];
+    if (geoIdsForInternalServerError.includes(body.geo_id)) {
+      throw new InternalServerErrorException();
+    }
+    if (body.geo_id === 213) {
+      return cityDummy;
+    }
+    return errorDummy;
   }
 }
